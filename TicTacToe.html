@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <style>
 .cell {
@@ -11,9 +12,9 @@
 }
 </style>
 <body>
-<div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
-<div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
-<div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+    <div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+    <div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+    <div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
 </body>
 <script>
 (function (d){
@@ -21,15 +22,11 @@
     function clsCells(arr) {for(var i = 0, len = arr.length;i < len; i++) { arr[i].innerText = ""};};
     d.onclick = function (e) {
         if ((e.target.className == "cell") && (e.target.innerText == "")) {
-            if (player){
-                e.target.innerText = "X"; player = false;
-            } else {
-                e.target.innerText = "O"; player = true;
-            }
-            var arr = d.querySelectorAll('.cell'), v = [];
+            if (player){ e.target.innerText = "X"; player = false; } else { e.target.innerText = "O"; player = true; }
+            var arr = d.querySelectorAll('.cell'), v = [], X="XXX", O="OOO";
             for(var i = 0, len = arr.length;i < len; i++) { v[i] = arr[i].innerText };
-            if ((v[0] == "X" && v[1] == "X" && v[2] == "X") || (v[3] == "X" && v[4] == "X" && v[5] == "X") || (v[6] == "X" && v[7] == "X" && v[8] == "X") || (v[0] == "X" && v[3] == "X" && v[6] == "X") || (v[1] == "X" && v[4] == "X" && v[7] == "X") || (v[2] == "X" && v[5] == "X" && v[8] == "X") || (v[0] == "X" && v[4] == "X" && v[8] == "X") || (v[2] == "X" && v[4] == "X" && v[6] == "X")) {alert("X wins!"); clsCells(arr);}
-            if ((v[0] == "O" && v[1] == "O" && v[2] == "O") || (v[3] == "O" && v[4] == "O" && v[5] == "O") || (v[6] == "O" && v[7] == "O" && v[8] == "O") || (v[0] == "O" && v[3] == "O" && v[6] == "O") || (v[1] == "O" && v[4] == "O" && v[7] == "O") || (v[2] == "O" && v[5] == "O" && v[8] == "O") || (v[0] == "O" && v[4] == "O" && v[8] == "O") || (v[2] == "O" && v[4] == "O" && v[6] == "O")) {alert("O wins!"); clsCells(arr);}
+            if ((v[0] + v[1] + v[2] == X) || (v[3] + v[4] + v[5] == X) || (v[6] + v[7] + v[8] == X) || (v[0] + v[3] + v[6] == X) || (v[1] + v[4] + v[7] == X) || (v[2] + v[5] + v[8] == X) || (v[0] + v[4] + v[8] == X) || (v[2] + v[4] + v[6] == X)) {alert("X wins!"); clsCells(arr);}
+            if ((v[0] + v[1] + v[2] == O) || (v[3] + v[4] + v[5] == O) || (v[6] + v[7] + v[8] == O) || (v[0] + v[3] + v[6] == O) || (v[1] + v[4] + v[7] == O) || (v[2] + v[5] + v[8] == O) || (v[0] + v[4] + v[8] == O) || (v[2] + v[4] + v[6] == O)) {alert("O wins!"); clsCells(arr);}
         }
     };
 })(document);
